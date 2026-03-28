@@ -2,7 +2,26 @@
    Base
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'MiSans';
+  src: url('/fonts/MiSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MiSans';
+  src: url('/fonts/MiSans-Medium.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MiSans';
+  src: url('/fonts/MiSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
 
 :root {
   --bg: #0a0a12;
@@ -13,9 +32,9 @@
   --old: #ff6b6b;
   --card-bg: rgba(255,255,255,0.04);
   --card-border: rgba(255,255,255,0.08);
-  --font-sans: 'Space Grotesk','Noto Sans SC',system-ui,sans-serif;
-  --font-mono: 'JetBrains Mono','Menlo',monospace;
-  --font-cn: 'Noto Sans SC',system-ui,sans-serif;
+  --font-sans: 'MiSans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Menlo', monospace;
+  --font-cn: 'MiSans', system-ui, sans-serif;
 }
 
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
