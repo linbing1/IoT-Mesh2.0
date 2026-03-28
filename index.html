@@ -44,7 +44,7 @@
                   <text x="150" y="170" text-anchor="middle" fill="#666" font-size="12" font-family="Noto Sans SC">默认开启 Relay</text>
                 </svg>
               </div>
-              <div class="desc cn">可靠性来源于消息积累<br>所有设备<span class="highlight">默认开启Relay</span></div>
+              <div class="desc cn">可靠性来源于消息积累<br>所有设备<span class="highlight">默认开启 Relay</span></div>
             </div>
 
             <!-- Right: Retransmission bars -->
@@ -115,7 +115,7 @@
                 <div class="bcast-bar bcast-2" style="height:52px"></div>
                 <div class="bcast-bar bcast-2" style="height:56px"></div>
               </div>
-              <div class="desc cn mt-1">Relay两个消息，每个重发3次<br>设备支持多<span class="highlight-blue">广播集</span>，Relay消息可插入广播集重发空隙</div>
+              <div class="desc cn mt-1">Relay 两个消息，每个重发 3 次<br>设备支持多<span class="highlight-blue">广播集</span>，Relay 消息可插入广播集重发空隙</div>
             </div>
 
             <div class="compare-side" data-f="2">
@@ -134,7 +134,7 @@
                   <text x="195" y="115" fill="#666" font-size="10" font-family="JetBrains Mono">+Δt₃</text>
                 </svg>
               </div>
-              <div class="desc cn">状态消息回传前增加<span class="highlight">随机延时</span><br>建立消息<span class="highlight-blue">优先级队列</span>，保证控制命令优先Relay<br>降低单位时间内消息数量</div>
+              <div class="desc cn">状态消息回传前增加<span class="highlight">随机延时</span><br>建立消息<span class="highlight-blue">优先级队列</span>，保证控制命令优先 Relay<br>降低单位时间内消息数量</div>
             </div>
           </div>
         </div>
@@ -143,7 +143,7 @@
       <!-- ============================== 3. Remote OTA ============================== -->
       <section class="slide">
         <div class="flex-col gap-3" style="align-items:center">
-          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">远程OTA</span></div>
+          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">远程 OTA</span></div>
 
           <div class="compare mt-2">
             <div class="compare-side" data-f="1">
@@ -154,12 +154,12 @@
                   <rect x="20" y="50" width="50" height="35" rx="6" fill="#2a2a35" stroke="rgba(255,255,255,0.1)"/>
                   <line x1="80" y1="67" x2="200" y2="67" stroke="#666" stroke-width="1.5" stroke-dasharray="4 3"/>
                   <polygon points="200,62 210,67 200,72" fill="#666"/>
-                  <text x="110" y="55" fill="#666" font-size="11" font-family="Noto Sans SC">固件200k</text>
-                  <text x="110" y="90" fill="#666" font-size="11" font-family="Noto Sans SC">Mesh消息25000条</text>
+                  <text x="110" y="55" fill="#666" font-size="11" font-family="Noto Sans SC">固件 200k</text>
+                  <text x="110" y="90" fill="#666" font-size="11" font-family="Noto Sans SC">Mesh 消息 25000 条</text>
                   <circle cx="240" cy="67" r="12" fill="#555"/>
                 </svg>
               </div>
-              <div class="desc cn">使用Mesh网络OTA，消息数量多，引发<span style="color:var(--old)">广播风暴</span><br>Payload短，OTA时间长</div>
+              <div class="desc cn">使用 Mesh 网络 OTA，消息数量多，引发<span style="color:var(--old)">广播风暴</span><br>Payload 短，OTA 时间长</div>
             </div>
 
             <div class="compare-side" data-f="2">
@@ -179,7 +179,7 @@
                   <line x1="216" y1="67" x2="238" y2="67" class="ota-path-line"/>
                 </svg>
               </div>
-              <div class="desc cn"><span class="highlight">寻路算法</span>，只做路径上转发，有效降低广播风暴<br>使用<span class="highlight-blue">BLE扩展广播</span>，有效Payload增大</div>
+              <div class="desc cn"><span class="highlight">寻路算法</span>，只做路径上转发，有效降低广播风暴<br>使用<span class="highlight-blue">BLE 扩展广播</span>，有效 Payload 增大</div>
             </div>
           </div>
         </div>
@@ -213,12 +213,12 @@
                   <line x1="240" y1="145" x2="60" y2="145" class="seq-arrow"/>
                   <text x="150" y="130" text-anchor="middle" class="seq-label-dim">证书链双向认证</text>
                   <line x1="60" y1="185" x2="240" y2="185" class="seq-arrow"/>
-                  <text x="150" y="180" text-anchor="middle" class="seq-label-dim">基于GATT配置</text>
+                  <text x="150" y="180" text-anchor="middle" class="seq-label-dim">基于 GATT 配置</text>
                   <line x1="60" y1="225" x2="240" y2="225" class="seq-arrow"/>
                   <text x="150" y="220" text-anchor="middle" class="seq-label-dim">Terminate</text>
                 </svg>
               </div>
-              <div class="desc cn">建立GATT直连，基于<span style="color:var(--old)">证书链</span>双向认证</div>
+              <div class="desc cn">建立 GATT 直连，基于<span style="color:var(--old)">证书链</span>双向认证</div>
             </div>
 
             <div class="compare-side" data-f="2">
@@ -244,7 +244,7 @@
                   <text x="150" y="195" text-anchor="middle" class="seq-label" fill="#00d4aa">基于扩展广播配置</text>
                 </svg>
               </div>
-              <div class="desc cn">使用<span class="highlight-blue">BLE扩展广播</span>，基于<span class="highlight">三元组</span>双向认证</div>
+              <div class="desc cn">使用<span class="highlight-blue">BLE 扩展广播</span>，基于<span class="highlight">三元组</span>双向认证</div>
             </div>
           </div>
         </div>
@@ -276,7 +276,7 @@
                   <text x="145" y="125" fill="#666" font-size="10" font-family="Noto Sans SC">msg3</text>
                 </svg>
               </div>
-              <div class="desc cn">Payload短，必须先将多设备<span style="color:var(--old)">分组</span>，再进行组控</div>
+              <div class="desc cn">Payload 短，必须先将多设备<span style="color:var(--old)">分组</span>，再进行组控</div>
             </div>
 
             <div class="compare-side" data-f="2">
@@ -298,7 +298,7 @@
                   <text x="140" y="80" fill="#00d4aa" font-size="11" font-family="Noto Sans SC" font-weight="700">1 msg</text>
                 </svg>
               </div>
-              <div class="desc cn">使用<span class="highlight-blue">BLE扩展广播</span>，一个消息，直接进行多设备<span class="highlight">控制/配置</span></div>
+              <div class="desc cn">使用<span class="highlight-blue">BLE 扩展广播</span>，一个消息，直接进行多设备<span class="highlight">控制/配置</span></div>
             </div>
           </div>
         </div>
@@ -329,7 +329,7 @@
                 <svg viewBox="0 0 300 120" fill="none">
                   <polyline points="10,90 50,90 50,30 55,30 55,90 120,90 120,30 125,30 125,90 190,90 190,30 195,30 195,90 260,90 260,30 265,30 265,90 290,90" class="wave-new"/>
                   <polyline points="10,90 50,90 50,30 55,30 55,90 120,90 120,30 125,30 125,90 190,90 190,30 195,30 195,90 260,90 260,30 265,30 265,90 290,90" class="wave-new-glow wave-animated"/>
-                  <text x="150" y="110" text-anchor="middle" fill="#00d4aa" font-size="11" font-family="Noto Sans SC">BLE周期广播</text>
+                  <text x="150" y="110" text-anchor="middle" fill="#00d4aa" font-size="11" font-family="Noto Sans SC">BLE 周期广播</text>
                 </svg>
               </div>
               <div class="desc cn">网关与设备<span class="highlight">精确时间同步</span><br>设备功耗低，响应时间<span class="highlight">&lt;200ms</span></div>
