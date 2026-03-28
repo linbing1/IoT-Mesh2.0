@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IoT-Mesh 2.0</title>
+    <style>
+      body { background: #0a0a12; color: #e8e8f0; }
+      #app:not(.ready) { opacity: 0; }
+      #app:not(.ready) .slide,
+      #app:not(.ready) [data-f] { transition: none !important; }
+    </style>
+  </head>
+  <body>
+    <div id="app" style="opacity:0">
+
+      <!-- ============================== 1. Reliability ============================== -->
+      <section class="slide">
+        <div class="flex-col gap-3" style="align-items:center">
+          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">可靠性</span></div>
+          <div class="metric new mono">2.0 控制成功率 >99.9%</div>
+
+          <div class="compare mt-2">
+            <!-- Left: Mesh topology -->
+            <div class="compare-side" data-f="1">
+              <div class="diagram">
+                <svg viewBox="0 0 300 220" fill="none">
+                  <circle cx="150" cy="30" r="12" class="mesh-node"/>
+                  <circle cx="50" cy="110" r="12" class="mesh-node"/>
+                  <circle cx="250" cy="110" r="12" class="mesh-node"/>
+                  <circle cx="100" cy="200" r="12" class="mesh-node"/>
+                  <circle cx="200" cy="200" r="12" class="mesh-node"/>
+                  <circle cx="150" cy="120" r="10" class="mesh-node-center"/>
+                  <line x1="150" y1="30" x2="50" y2="110" class="mesh-link-active"/>
+                  <line x1="150" y1="30" x2="250" y2="110" class="mesh-link-active"/>
+                  <line x1="50" y1="110" x2="100" y2="200" class="mesh-link-active"/>
+                  <line x1="250" y1="110" x2="200" y2="200" class="mesh-link-active"/>
+                  <line x1="100" y1="200" x2="200" y2="200" class="mesh-link"/>
+                  <line x1="50" y1="110" x2="150" y2="120" class="mesh-link-active"/>
+                  <line x1="250" y1="110" x2="150" y2="120" class="mesh-link-active"/>
+                  <line x1="150" y1="120" x2="100" y2="200" class="mesh-link"/>
+                  <line x1="150" y1="120" x2="200" y2="200" class="mesh-link"/>
+                  <text x="150" y="170" text-anchor="middle" fill="#666" font-size="12" font-family="Noto Sans SC">默认开启 Relay</text>
+                </svg>
+              </div>
+              <div class="desc cn">可靠性来源于消息积累<br>所有设备<span class="highlight">默认开启Relay</span></div>
+            </div>
+
+            <!-- Right: Retransmission bars -->
+            <div class="compare-side" data-f="2">
+              <div class="retrans-bars">
+                <div class="retrans-group">
+                  <div class="bar-row">
+                    <div class="bar bar-green bar-animated" style="height:50px;animation-delay:0s"></div>
+                    <div class="bar bar-green bar-animated" style="height:45px;animation-delay:.05s"></div>
+                    <div class="bar bar-green bar-animated" style="height:55px;animation-delay:.1s"></div>
+                    <div class="bar bar-blue bar-animated" style="height:48px;animation-delay:.15s"></div>
+                    <div class="bar bar-blue bar-animated" style="height:52px;animation-delay:.2s"></div>
+                  </div>
+                  <div class="retrans-group-label">控制命令 1</div>
+                </div>
+                <div class="retrans-group">
+                  <div class="bar-row">
+                    <div class="bar bar-green bar-animated" style="height:52px;animation-delay:.4s"></div>
+                    <div class="bar bar-green bar-animated" style="height:48px;animation-delay:.45s"></div>
+                    <div class="bar bar-green bar-animated" style="height:50px;animation-delay:.5s"></div>
+                    <div class="bar bar-blue bar-animated" style="height:55px;animation-delay:.55s"></div>
+                    <div class="bar bar-blue bar-animated" style="height:45px;animation-delay:.6s"></div>
+                  </div>
+                  <div class="retrans-group-label">控制命令 2</div>
+                </div>
+                <div class="retrans-group">
+                  <div class="bar-row">
+                    <div class="bar bar-green bar-animated" style="height:48px;animation-delay:.8s"></div>
+                    <div class="bar bar-green bar-animated" style="height:55px;animation-delay:.85s"></div>
+                    <div class="bar bar-green bar-animated" style="height:50px;animation-delay:.9s"></div>
+                    <div class="bar bar-blue bar-animated" style="height:52px;animation-delay:.95s"></div>
+                    <div class="bar bar-blue bar-animated" style="height:50px;animation-delay:1s"></div>
+                  </div>
+                  <div class="retrans-group-label">控制命令 3</div>
+                </div>
+              </div>
+              <div class="desc cn">网关/子设备<span class="highlight-blue">网络层重发</span><br>网关设置消息发送队列，动态调整<span class="highlight">重发次数</span>和间隔</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== 2. Consistency / Real-time ============================== -->
+      <section class="slide">
+        <div class="flex-col gap-3" style="align-items:center">
+          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">一致性/实时性</span></div>
+          <div class="mono" style="font-size:1.1rem">
+            <span class="metric new">2.0 一致性 &lt;100ms</span>
+            &nbsp;&nbsp;
+            <span class="metric new">实时性 &lt;200ms</span>
+          </div>
+
+          <div class="compare mt-2">
+            <div class="compare-side" data-f="1">
+              <div class="desc cn" style="margin-bottom:.5rem">
+                <span class="highlight-blue">广播集 1</span> &nbsp;
+                <span class="highlight">广播集 2</span>
+              </div>
+              <div class="broadcast-sets">
+                <div class="bcast-bar bcast-1" style="height:60px"></div>
+                <div class="bcast-bar bcast-1" style="height:55px"></div>
+                <div class="bcast-bar bcast-1" style="height:65px"></div>
+                <div class="bcast-bar bcast-2" style="height:50px"></div>
+                <div class="bcast-bar bcast-2" style="height:58px"></div>
+                <div class="bcast-bar bcast-1" style="height:62px"></div>
+                <div class="bcast-bar bcast-1" style="height:55px"></div>
+                <div class="bcast-bar bcast-1" style="height:60px"></div>
+                <div class="bcast-bar bcast-2" style="height:52px"></div>
+                <div class="bcast-bar bcast-2" style="height:56px"></div>
+              </div>
+              <div class="desc cn mt-1">Relay两个消息，每个重发3次<br>设备支持多<span class="highlight-blue">广播集</span>，Relay消息可插入广播集重发空隙</div>
+            </div>
+
+            <div class="compare-side" data-f="2">
+              <div class="diagram">
+                <svg viewBox="0 0 300 200" fill="none">
+                  <rect x="120" y="20" width="60" height="40" rx="6" fill="#2a2a35" stroke="rgba(255,255,255,0.1)"/>
+                  <rect x="147" y="14" width="6" height="8" rx="2" fill="#3b82f6"/>
+                  <line x1="150" y1="60" x2="80" y2="130" stroke="#00d4aa" stroke-width="1.5" opacity="0.6"/>
+                  <line x1="150" y1="60" x2="150" y2="130" stroke="#00d4aa" stroke-width="1.5" opacity="0.6"/>
+                  <line x1="150" y1="60" x2="220" y2="130" stroke="#00d4aa" stroke-width="1.5" opacity="0.6"/>
+                  <circle cx="80" cy="140" r="12" fill="#ffd54f"/>
+                  <circle cx="150" cy="140" r="12" fill="#ffd54f"/>
+                  <circle cx="220" cy="140" r="12" fill="#ffd54f"/>
+                  <text x="95" y="115" fill="#666" font-size="10" font-family="JetBrains Mono">+Δt₁</text>
+                  <text x="155" y="105" fill="#666" font-size="10" font-family="JetBrains Mono">+Δt₂</text>
+                  <text x="195" y="115" fill="#666" font-size="10" font-family="JetBrains Mono">+Δt₃</text>
+                </svg>
+              </div>
+              <div class="desc cn">状态消息回传前增加<span class="highlight">随机延时</span><br>建立消息<span class="highlight-blue">优先级队列</span>，保证控制命令优先Relay<br>降低单位时间内消息数量</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== 3. Remote OTA ============================== -->
+      <section class="slide">
+        <div class="flex-col gap-3" style="align-items:center">
+          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">远程OTA</span></div>
+
+          <div class="compare mt-2">
+            <div class="compare-side" data-f="1">
+              <div class="compare-badge old">1.0</div>
+              <div class="metric old">单设备耗时 >2hours</div>
+              <div class="diagram">
+                <svg viewBox="0 0 300 160" fill="none">
+                  <rect x="20" y="50" width="50" height="35" rx="6" fill="#2a2a35" stroke="rgba(255,255,255,0.1)"/>
+                  <line x1="80" y1="67" x2="200" y2="67" stroke="#666" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <polygon points="200,62 210,67 200,72" fill="#666"/>
+                  <text x="110" y="55" fill="#666" font-size="11" font-family="Noto Sans SC">固件200k</text>
+                  <text x="110" y="90" fill="#666" font-size="11" font-family="Noto Sans SC">Mesh消息25000条</text>
+                  <circle cx="240" cy="67" r="12" fill="#555"/>
+                </svg>
+              </div>
+              <div class="desc cn">使用Mesh网络OTA，消息数量多，引发<span style="color:var(--old)">广播风暴</span><br>Payload短，OTA时间长</div>
+            </div>
+
+            <div class="compare-side" data-f="2">
+              <div class="compare-badge new">2.0</div>
+              <div class="metric new">远程广播 耗时 &lt;10min</div>
+              <div class="diagram">
+                <svg viewBox="0 0 300 160" fill="none">
+                  <rect x="20" y="50" width="50" height="35" rx="6" fill="#2a2a35" stroke="rgba(255,255,255,0.1)"/>
+                  <rect x="42" y="44" width="6" height="8" rx="2" fill="#3b82f6"/>
+                  <circle cx="110" cy="67" r="6" class="ota-path-node"/>
+                  <circle cx="160" cy="50" r="6" class="ota-path-node"/>
+                  <circle cx="210" cy="67" r="6" class="ota-path-node"/>
+                  <line x1="70" y1="67" x2="104" y2="67" class="ota-path-line"/>
+                  <line x1="116" y1="63" x2="154" y2="52" class="ota-path-line"/>
+                  <line x1="166" y1="53" x2="204" y2="65" class="ota-path-line"/>
+                  <circle cx="250" cy="67" r="12" fill="#ffd54f"/>
+                  <line x1="216" y1="67" x2="238" y2="67" class="ota-path-line"/>
+                </svg>
+              </div>
+              <div class="desc cn"><span class="highlight">寻路算法</span>，只做路径上转发，有效降低广播风暴<br>使用<span class="highlight-blue">BLE扩展广播</span>，有效Payload增大</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== 4. Fast Provisioning ============================== -->
+      <section class="slide">
+        <div class="flex-col gap-3" style="align-items:center">
+          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">秒级配网</span></div>
+
+          <div class="compare mt-2">
+            <div class="compare-side" data-f="1">
+              <div class="compare-badge old">1.0</div>
+              <div class="metric old">单设备配网 >5s</div>
+              <div class="diagram">
+                <svg viewBox="0 0 300 260" fill="none">
+                  <defs>
+                    <marker id="arrowhead-dim" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+                    </marker>
+                  </defs>
+                  <text x="60" y="20" text-anchor="middle" fill="#e8e8f0" font-size="13" font-family="Noto Sans SC">手机</text>
+                  <line x1="60" y1="30" x2="60" y2="250" class="seq-lifeline"/>
+                  <text x="240" y="20" text-anchor="middle" fill="#e8e8f0" font-size="13" font-family="Noto Sans SC">设备</text>
+                  <line x1="240" y1="30" x2="240" y2="250" class="seq-lifeline"/>
+                  <line x1="240" y1="55" x2="60" y2="55" class="seq-arrow"/>
+                  <text x="150" y="50" text-anchor="middle" class="seq-label-dim">Adv</text>
+                  <line x1="60" y1="95" x2="240" y2="95" class="seq-arrow"/>
+                  <text x="150" y="90" text-anchor="middle" class="seq-label-dim">Connect</text>
+                  <line x1="60" y1="135" x2="240" y2="135" class="seq-arrow"/>
+                  <line x1="240" y1="145" x2="60" y2="145" class="seq-arrow"/>
+                  <text x="150" y="130" text-anchor="middle" class="seq-label-dim">证书链双向认证</text>
+                  <line x1="60" y1="185" x2="240" y2="185" class="seq-arrow"/>
+                  <text x="150" y="180" text-anchor="middle" class="seq-label-dim">基于GATT配置</text>
+                  <line x1="60" y1="225" x2="240" y2="225" class="seq-arrow"/>
+                  <text x="150" y="220" text-anchor="middle" class="seq-label-dim">Terminate</text>
+                </svg>
+              </div>
+              <div class="desc cn">建立GATT直连，基于<span style="color:var(--old)">证书链</span>双向认证</div>
+            </div>
+
+            <div class="compare-side" data-f="2">
+              <div class="compare-badge new">2.0</div>
+              <div class="metric new">单设备配网 &lt;1s</div>
+              <div class="diagram">
+                <svg viewBox="0 0 300 260" fill="none">
+                  <defs>
+                    <marker id="arrowhead-accent" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                      <polygon points="0 0, 8 3, 0 6" fill="#00d4aa"/>
+                    </marker>
+                  </defs>
+                  <text x="60" y="20" text-anchor="middle" fill="#e8e8f0" font-size="13" font-family="Noto Sans SC">手机</text>
+                  <line x1="60" y1="30" x2="60" y2="250" class="seq-lifeline"/>
+                  <text x="240" y="20" text-anchor="middle" fill="#e8e8f0" font-size="13" font-family="Noto Sans SC">设备</text>
+                  <line x1="240" y1="30" x2="240" y2="250" class="seq-lifeline"/>
+                  <line x1="240" y1="80" x2="60" y2="80" class="seq-arrow-new"/>
+                  <text x="150" y="75" text-anchor="middle" class="seq-label" fill="#00d4aa">Adv</text>
+                  <line x1="60" y1="140" x2="240" y2="140" class="seq-arrow-new"/>
+                  <line x1="240" y1="150" x2="60" y2="150" class="seq-arrow-new"/>
+                  <text x="150" y="135" text-anchor="middle" class="seq-label" fill="#00d4aa">三元组双向认证</text>
+                  <line x1="60" y1="200" x2="240" y2="200" class="seq-arrow-new"/>
+                  <text x="150" y="195" text-anchor="middle" class="seq-label" fill="#00d4aa">基于扩展广播配置</text>
+                </svg>
+              </div>
+              <div class="desc cn">使用<span class="highlight-blue">BLE扩展广播</span>，基于<span class="highlight">三元组</span>双向认证</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== 5. Multi-device Control ============================== -->
+      <section class="slide">
+        <div class="flex-col gap-3" style="align-items:center">
+          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">多设备控制/配置</span></div>
+
+          <div class="compare mt-2">
+            <div class="compare-side" data-f="1">
+              <div class="compare-badge old">1.0</div>
+              <div class="metric old" style="font-size:.95rem">多条消息、配置时间长</div>
+              <div class="diagram">
+                <svg viewBox="0 0 300 200" fill="none">
+                  <rect x="30" y="70" width="60" height="40" rx="6" fill="#2a2a35" stroke="rgba(255,255,255,0.1)"/>
+                  <line x1="90" y1="80" x2="200" y2="50" stroke="#666" stroke-width="1.5"/>
+                  <polygon points="200,45 210,50 200,55" fill="#666"/>
+                  <line x1="90" y1="90" x2="200" y2="90" stroke="#666" stroke-width="1.5"/>
+                  <polygon points="200,85 210,90 200,95" fill="#666"/>
+                  <line x1="90" y1="100" x2="200" y2="140" stroke="#666" stroke-width="1.5"/>
+                  <polygon points="200,135 210,140 200,145" fill="#666"/>
+                  <circle cx="230" cy="50" r="12" fill="#555"/>
+                  <circle cx="230" cy="90" r="12" fill="#555"/>
+                  <circle cx="230" cy="140" r="12" fill="#555"/>
+                  <text x="145" y="72" fill="#666" font-size="10" font-family="Noto Sans SC">msg1</text>
+                  <text x="145" y="85" fill="#666" font-size="10" font-family="Noto Sans SC">msg2</text>
+                  <text x="145" y="125" fill="#666" font-size="10" font-family="Noto Sans SC">msg3</text>
+                </svg>
+              </div>
+              <div class="desc cn">Payload短，必须先将多设备<span style="color:var(--old)">分组</span>，再进行组控</div>
+            </div>
+
+            <div class="compare-side" data-f="2">
+              <div class="compare-badge new">2.0</div>
+              <div class="metric new" style="font-size:.95rem">一条消息、配置快、同步性好</div>
+              <div class="diagram">
+                <svg viewBox="0 0 300 200" fill="none">
+                  <rect x="30" y="70" width="60" height="40" rx="6" fill="#2a2a35" stroke="rgba(255,255,255,0.1)"/>
+                  <rect x="57" y="64" width="6" height="8" rx="2" fill="#3b82f6"/>
+                  <path d="M90,90 Q150,50 210,50" class="fan-arrow"/>
+                  <path d="M90,90 L210,90" class="fan-arrow"/>
+                  <path d="M90,90 Q150,130 210,140" class="fan-arrow"/>
+                  <polygon points="207,46 215,50 207,54" fill="#00d4aa" opacity="0.8"/>
+                  <polygon points="207,86 215,90 207,94" fill="#00d4aa" opacity="0.8"/>
+                  <polygon points="207,136 215,140 207,144" fill="#00d4aa" opacity="0.8"/>
+                  <circle cx="230" cy="50" r="12" fill="#ffd54f"/>
+                  <circle cx="230" cy="90" r="12" fill="#ffd54f"/>
+                  <circle cx="230" cy="140" r="12" fill="#ffd54f"/>
+                  <text x="140" y="80" fill="#00d4aa" font-size="11" font-family="Noto Sans SC" font-weight="700">1 msg</text>
+                </svg>
+              </div>
+              <div class="desc cn">使用<span class="highlight-blue">BLE扩展广播</span>，一个消息，直接进行多设备<span class="highlight">控制/配置</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== 6. Ultra-low Power ============================== -->
+      <section class="slide">
+        <div class="flex-col gap-3" style="align-items:center">
+          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">超低功耗</span></div>
+
+          <div class="compare mt-2">
+            <div class="compare-side" data-f="1">
+              <div class="compare-badge old">1.0</div>
+              <div class="metric old">平均电流 >0.8mA</div>
+              <div class="diagram">
+                <svg viewBox="0 0 300 120" fill="none">
+                  <polyline points="10,90 10,30 30,30 30,90 40,90 40,30 60,30 60,90 70,90 70,30 90,30 90,90 100,90 100,30 120,30 120,90 130,90 130,30 150,30 150,90 160,90 160,30 180,30 180,90 190,90 190,30 210,30 210,90 220,90 220,30 240,30 240,90 250,90 250,30 270,30 270,90 290,90" class="wave-old"/>
+                  <text x="150" y="110" text-anchor="middle" fill="#666" font-size="11" font-family="Noto Sans SC">有限扫描窗口</text>
+                </svg>
+              </div>
+              <div class="desc cn">网关更密集发送控制命令<br>设备功耗高，<span style="color:var(--old)">响应速度慢</span></div>
+            </div>
+
+            <div class="compare-side" data-f="2">
+              <div class="compare-badge new">2.0</div>
+              <div class="metric new">平均电流 &lt;0.2mA</div>
+              <div class="diagram">
+                <svg viewBox="0 0 300 120" fill="none">
+                  <polyline points="10,90 50,90 50,30 55,30 55,90 120,90 120,30 125,30 125,90 190,90 190,30 195,30 195,90 260,90 260,30 265,30 265,90 290,90" class="wave-new"/>
+                  <polyline points="10,90 50,90 50,30 55,30 55,90 120,90 120,30 125,30 125,90 190,90 190,30 195,30 195,90 260,90 260,30 265,30 265,90 290,90" class="wave-new-glow wave-animated"/>
+                  <text x="150" y="110" text-anchor="middle" fill="#00d4aa" font-size="11" font-family="Noto Sans SC">BLE周期广播</text>
+                </svg>
+              </div>
+              <div class="desc cn">网关与设备<span class="highlight">精确时间同步</span><br>设备功耗低，响应时间<span class="highlight">&lt;200ms</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Progress bar -->
+    <div id="progress"><div id="progress-bar"></div></div>
+    <div id="slide-counter" class="mono"></div>
+    <div class="nav-hint">← → 翻页 · ↑ ↓ 步进 · ESC 总览</div>
+
+    <!-- Mobile nav -->
+    <nav class="mobile-nav">
+      <button class="mobile-nav-btn" id="mnav-prev">◀</button>
+      <button class="mobile-nav-btn" id="mnav-up">▲</button>
+      <button class="mobile-nav-btn mobile-nav-overview" id="mnav-overview">▣</button>
+      <button class="mobile-nav-btn" id="mnav-down">▼</button>
+      <button class="mobile-nav-btn" id="mnav-next">▶</button>
+    </nav>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
