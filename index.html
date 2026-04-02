@@ -15,33 +15,46 @@
   <body>
     <div id="app" style="opacity:0">
 
+      <!-- ============================== 0. Title ============================== -->
+      <section class="slide">
+        <div class="title-large cn gradient-text">IoT-Mesh 2.0 协议</div>
+      </section>
+
       <!-- ============================== 1. Reliability ============================== -->
       <section class="slide">
         <div class="flex-col gap-3" style="align-items:center">
-          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">可靠性</span></div>
+          <div class="title-large cn gradient-text">IoT-Mesh 2.0 可靠性</div>
           <div class="metric new mono">2.0 控制成功率 >99.9%</div>
 
           <div class="compare mt-2">
             <!-- Left: Mesh topology -->
             <div class="compare-side" data-f="1">
               <div class="diagram">
-                <svg viewBox="0 0 300 220" fill="none">
-                  <circle cx="150" cy="30" r="12" class="mesh-node"/>
-                  <circle cx="50" cy="110" r="12" class="mesh-node"/>
-                  <circle cx="250" cy="110" r="12" class="mesh-node"/>
-                  <circle cx="100" cy="200" r="12" class="mesh-node"/>
-                  <circle cx="200" cy="200" r="12" class="mesh-node"/>
-                  <circle cx="150" cy="120" r="10" class="mesh-node-center"/>
-                  <line x1="150" y1="30" x2="50" y2="110" class="mesh-link-active"/>
-                  <line x1="150" y1="30" x2="250" y2="110" class="mesh-link-active"/>
-                  <line x1="50" y1="110" x2="100" y2="200" class="mesh-link-active"/>
-                  <line x1="250" y1="110" x2="200" y2="200" class="mesh-link-active"/>
-                  <line x1="100" y1="200" x2="200" y2="200" class="mesh-link"/>
-                  <line x1="50" y1="110" x2="150" y2="120" class="mesh-link-active"/>
-                  <line x1="250" y1="110" x2="150" y2="120" class="mesh-link-active"/>
-                  <line x1="150" y1="120" x2="100" y2="200" class="mesh-link"/>
-                  <line x1="150" y1="120" x2="200" y2="200" class="mesh-link"/>
-                  <text x="150" y="170" text-anchor="middle" fill="#666" font-size="12" font-family="Noto Sans SC">默认开启 Relay</text>
+                <svg viewBox="0 0 340 230" fill="none">
+                  <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+                    </marker>
+                  </defs>
+                  <!-- Relay box -->
+                  <rect x="115" y="28" width="110" height="190" rx="6" stroke="var(--accent)" stroke-width="1.5" fill="none" opacity="0.5"/>
+                  <text x="170" y="20" text-anchor="middle" fill="var(--accent)" font-size="16" font-weight="bold" font-family="var(--ff)">默认开启 Relay</text>
+                  <!-- Left source node -->
+                  <circle cx="30" cy="120" r="14" class="mesh-node"/>
+                  <!-- Right dest node -->
+                  <circle cx="310" cy="120" r="14" class="mesh-node"/>
+                  <!-- Middle relay nodes -->
+                  <circle cx="170" cy="60" r="12" class="mesh-node-center"/>
+                  <circle cx="170" cy="120" r="12" class="mesh-node-center"/>
+                  <circle cx="170" cy="180" r="12" class="mesh-node-center"/>
+                  <!-- Arrows: left → middle -->
+                  <line x1="46" y1="110" x2="156" y2="64" class="mesh-flow" marker-end="url(#arrow)"/>
+                  <line x1="46" y1="120" x2="156" y2="120" class="mesh-flow" marker-end="url(#arrow)"/>
+                  <line x1="46" y1="130" x2="156" y2="176" class="mesh-flow" marker-end="url(#arrow)"/>
+                  <!-- Arrows: middle → right -->
+                  <line x1="184" y1="64" x2="294" y2="110" class="mesh-flow" marker-end="url(#arrow)"/>
+                  <line x1="184" y1="120" x2="294" y2="120" class="mesh-flow" marker-end="url(#arrow)"/>
+                  <line x1="184" y1="176" x2="294" y2="130" class="mesh-flow" marker-end="url(#arrow)"/>
                 </svg>
               </div>
               <div class="desc cn">可靠性来源于消息积累<br>所有设备<span class="highlight">默认开启 Relay</span></div>
@@ -49,37 +62,61 @@
 
             <!-- Right: Retransmission bars -->
             <div class="compare-side" data-f="2">
-              <div class="retrans-bars">
-                <div class="retrans-group">
-                  <div class="bar-row">
-                    <div class="bar bar-green bar-animated" style="height:50px;animation-delay:0s"></div>
-                    <div class="bar bar-green bar-animated" style="height:45px;animation-delay:.05s"></div>
-                    <div class="bar bar-green bar-animated" style="height:55px;animation-delay:.1s"></div>
-                    <div class="bar bar-blue bar-animated" style="height:48px;animation-delay:.15s"></div>
-                    <div class="bar bar-blue bar-animated" style="height:52px;animation-delay:.2s"></div>
-                  </div>
-                  <div class="retrans-group-label">控制命令 1</div>
-                </div>
-                <div class="retrans-group">
-                  <div class="bar-row">
-                    <div class="bar bar-green bar-animated" style="height:52px;animation-delay:.4s"></div>
-                    <div class="bar bar-green bar-animated" style="height:48px;animation-delay:.45s"></div>
-                    <div class="bar bar-green bar-animated" style="height:50px;animation-delay:.5s"></div>
-                    <div class="bar bar-blue bar-animated" style="height:55px;animation-delay:.55s"></div>
-                    <div class="bar bar-blue bar-animated" style="height:45px;animation-delay:.6s"></div>
-                  </div>
-                  <div class="retrans-group-label">控制命令 2</div>
-                </div>
-                <div class="retrans-group">
-                  <div class="bar-row">
-                    <div class="bar bar-green bar-animated" style="height:48px;animation-delay:.8s"></div>
-                    <div class="bar bar-green bar-animated" style="height:55px;animation-delay:.85s"></div>
-                    <div class="bar bar-green bar-animated" style="height:50px;animation-delay:.9s"></div>
-                    <div class="bar bar-blue bar-animated" style="height:52px;animation-delay:.95s"></div>
-                    <div class="bar bar-blue bar-animated" style="height:50px;animation-delay:1s"></div>
-                  </div>
-                  <div class="retrans-group-label">控制命令 3</div>
-                </div>
+              <div class="retrans-chart">
+                <svg viewBox="0 0 320 155" fill="none">
+                  <defs>
+                    <marker id="axis-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+                    </marker>
+                  </defs>
+                  <!-- Axis: dashed line with flowing arrow -->
+                  <line x1="0" y1="118" x2="310" y2="118" class="mesh-flow" marker-end="url(#axis-arrow)"/>
+
+                  <!-- Group 1: cyan #5ce0d8 — 9 bars, all height=90 -->
+                  <rect x="8"  y="28" width="5" height="90" rx="1" fill="#5ce0d8"/>
+                  <rect x="15" y="28" width="5" height="90" rx="1" fill="#5ce0d8"/>
+                  <rect x="22" y="28" width="5" height="90" rx="1" fill="#5ce0d8"/>
+                  <rect x="34" y="28" width="5" height="90" rx="1" fill="#5ce0d8"/>
+                  <rect x="41" y="28" width="5" height="90" rx="1" fill="#5ce0d8"/>
+                  <rect x="48" y="28" width="5" height="90" rx="1" fill="#5ce0d8"/>
+                  <rect x="60" y="28" width="5" height="90" rx="1" fill="#5ce0d8"/>
+                  <rect x="67" y="28" width="5" height="90" rx="1" fill="#5ce0d8"/>
+                  <rect x="74" y="28" width="5" height="90" rx="1" fill="#5ce0d8"/>
+                  <line x1="8" y1="124" x2="8" y2="128" stroke="var(--accent2)" stroke-width="1"/>
+                  <line x1="8" y1="128" x2="79" y2="128" stroke="var(--accent2)" stroke-width="1"/>
+                  <line x1="79" y1="124" x2="79" y2="128" stroke="var(--accent2)" stroke-width="1"/>
+                  <text x="44" y="143" text-anchor="middle" fill="var(--accent2)" font-size="10" font-family="var(--ff)">控制命令 1</text>
+
+                  <!-- Group 2: blue #45a5e6 — 9 bars, all height=90 -->
+                  <rect x="108" y="28" width="5" height="90" rx="1" fill="#45a5e6"/>
+                  <rect x="115" y="28" width="5" height="90" rx="1" fill="#45a5e6"/>
+                  <rect x="122" y="28" width="5" height="90" rx="1" fill="#45a5e6"/>
+                  <rect x="134" y="28" width="5" height="90" rx="1" fill="#45a5e6"/>
+                  <rect x="141" y="28" width="5" height="90" rx="1" fill="#45a5e6"/>
+                  <rect x="148" y="28" width="5" height="90" rx="1" fill="#45a5e6"/>
+                  <rect x="160" y="28" width="5" height="90" rx="1" fill="#45a5e6"/>
+                  <rect x="167" y="28" width="5" height="90" rx="1" fill="#45a5e6"/>
+                  <rect x="174" y="28" width="5" height="90" rx="1" fill="#45a5e6"/>
+                  <line x1="108" y1="124" x2="108" y2="128" stroke="var(--accent2)" stroke-width="1"/>
+                  <line x1="108" y1="128" x2="179" y2="128" stroke="var(--accent2)" stroke-width="1"/>
+                  <line x1="179" y1="124" x2="179" y2="128" stroke="var(--accent2)" stroke-width="1"/>
+                  <text x="144" y="143" text-anchor="middle" fill="var(--accent2)" font-size="10" font-family="var(--ff)">控制命令 2</text>
+
+                  <!-- Group 3: deep blue #3366cc — 9 bars, all height=90 -->
+                  <rect x="208" y="28" width="5" height="90" rx="1" fill="#3366cc"/>
+                  <rect x="215" y="28" width="5" height="90" rx="1" fill="#3366cc"/>
+                  <rect x="222" y="28" width="5" height="90" rx="1" fill="#3366cc"/>
+                  <rect x="234" y="28" width="5" height="90" rx="1" fill="#3366cc"/>
+                  <rect x="241" y="28" width="5" height="90" rx="1" fill="#3366cc"/>
+                  <rect x="248" y="28" width="5" height="90" rx="1" fill="#3366cc"/>
+                  <rect x="260" y="28" width="5" height="90" rx="1" fill="#3366cc"/>
+                  <rect x="267" y="28" width="5" height="90" rx="1" fill="#3366cc"/>
+                  <rect x="274" y="28" width="5" height="90" rx="1" fill="#3366cc"/>
+                  <line x1="208" y1="124" x2="208" y2="128" stroke="var(--accent2)" stroke-width="1"/>
+                  <line x1="208" y1="128" x2="279" y2="128" stroke="var(--accent2)" stroke-width="1"/>
+                  <line x1="279" y1="124" x2="279" y2="128" stroke="var(--accent2)" stroke-width="1"/>
+                  <text x="244" y="143" text-anchor="middle" fill="var(--accent2)" font-size="10" font-family="var(--ff)">控制命令 3</text>
+                </svg>
               </div>
               <div class="desc cn">网关/子设备<span class="highlight-blue">网络层重发</span><br>网关设置消息发送队列，动态调整<span class="highlight">重发次数</span>和间隔</div>
             </div>
@@ -90,48 +127,90 @@
       <!-- ============================== 2. Consistency / Real-time ============================== -->
       <section class="slide">
         <div class="flex-col gap-3" style="align-items:center">
-          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">一致性/实时性</span></div>
+          <div class="title-large cn gradient-text">IoT-Mesh 2.0 一致性/实时性</div>
           <div class="mono" style="font-size:1.1rem">
             <span class="metric new">2.0 一致性 &lt;100ms</span>
             &nbsp;&nbsp;
             <span class="metric new">实时性 &lt;200ms</span>
           </div>
 
-          <div class="compare mt-2">
+          <div class="compare mt-2" style="grid-template-columns:1.2fr 1fr;max-width:1100px">
             <div class="compare-side" data-f="1">
-              <div class="desc cn" style="margin-bottom:.5rem">
-                <span class="highlight-blue">广播集 1</span> &nbsp;
-                <span class="highlight">广播集 2</span>
+              <div class="bcast-chart" style="width:100%">
+                <svg viewBox="0 0 420 200" fill="none">
+                  <defs>
+                    <marker id="bcast-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+                    </marker>
+                  </defs>
+                  <!-- Legend -->
+                  <rect x="50" y="4" width="8" height="12" rx="1" fill="#7ecbf5"/>
+                  <text x="64" y="14" fill="#b0b0c0" font-size="12" font-family="var(--ff)">广播集 1</text>
+                  <rect x="160" y="4" width="8" height="12" rx="1" fill="#4a8fd4"/>
+                  <text x="174" y="14" fill="#b0b0c0" font-size="12" font-family="var(--ff)">广播集 2</text>
+
+                  <!-- Group 1: 3×广播集1 + 3×广播集2 -->
+                  <rect x="50"  y="28" width="7" height="85" rx="1" fill="#7ecbf5"/>
+                  <rect x="59"  y="28" width="7" height="85" rx="1" fill="#7ecbf5"/>
+                  <rect x="68"  y="28" width="7" height="85" rx="1" fill="#7ecbf5"/>
+                  <rect x="82"  y="28" width="7" height="85" rx="1" fill="#4a8fd4"/>
+                  <rect x="91"  y="28" width="7" height="85" rx="1" fill="#4a8fd4"/>
+                  <rect x="100" y="28" width="7" height="85" rx="1" fill="#4a8fd4"/>
+
+                  <!-- Group 2: 3×广播集1 + 3×广播集2 -->
+                  <rect x="150" y="28" width="7" height="85" rx="1" fill="#7ecbf5"/>
+                  <rect x="159" y="28" width="7" height="85" rx="1" fill="#7ecbf5"/>
+                  <rect x="168" y="28" width="7" height="85" rx="1" fill="#7ecbf5"/>
+                  <rect x="182" y="28" width="7" height="85" rx="1" fill="#4a8fd4"/>
+                  <rect x="191" y="28" width="7" height="85" rx="1" fill="#4a8fd4"/>
+                  <rect x="200" y="28" width="7" height="85" rx="1" fill="#4a8fd4"/>
+
+                  <!-- Group 3: 3×广播集1 + 3×广播集2 -->
+                  <rect x="250" y="28" width="7" height="85" rx="1" fill="#7ecbf5"/>
+                  <rect x="259" y="28" width="7" height="85" rx="1" fill="#7ecbf5"/>
+                  <rect x="268" y="28" width="7" height="85" rx="1" fill="#7ecbf5"/>
+                  <rect x="282" y="28" width="7" height="85" rx="1" fill="#4a8fd4"/>
+                  <rect x="291" y="28" width="7" height="85" rx="1" fill="#4a8fd4"/>
+                  <rect x="300" y="28" width="7" height="85" rx="1" fill="#4a8fd4"/>
+
+                  <!-- Dashed axis with flowing arrow — extends beyond bars -->
+                  <line x1="10" y1="117" x2="410" y2="117" class="mesh-flow" marker-end="url(#bcast-arrow)"/>
+
+                  <!-- 重发间隔 bracket -->
+                  <line x1="50" y1="124" x2="50" y2="134" stroke="#b0b0c0" stroke-width="1"/>
+                  <line x1="50" y1="134" x2="150" y2="134" stroke="#b0b0c0" stroke-width="1" stroke-dasharray="3 2"/>
+                  <line x1="150" y1="124" x2="150" y2="134" stroke="#b0b0c0" stroke-width="1"/>
+                  <text x="100" y="150" text-anchor="middle" fill="#c0c0d0" font-size="13" font-family="var(--ff)">重发间隔</text>
+
+                  <!-- Relay两个消息，每个重发3次 bracket -->
+                  <line x1="50" y1="162" x2="50" y2="172" stroke="#b0b0c0" stroke-width="1"/>
+                  <line x1="50" y1="172" x2="307" y2="172" stroke="#b0b0c0" stroke-width="1"/>
+                  <line x1="307" y1="162" x2="307" y2="172" stroke="#b0b0c0" stroke-width="1"/>
+                  <text x="178" y="190" text-anchor="middle" fill="#c0c0d0" font-size="13" font-family="var(--ff)">Relay 两个消息，每个重发 3 次</text>
+                </svg>
               </div>
-              <div class="broadcast-sets">
-                <div class="bcast-bar bcast-1" style="height:60px"></div>
-                <div class="bcast-bar bcast-1" style="height:55px"></div>
-                <div class="bcast-bar bcast-1" style="height:65px"></div>
-                <div class="bcast-bar bcast-2" style="height:50px"></div>
-                <div class="bcast-bar bcast-2" style="height:58px"></div>
-                <div class="bcast-bar bcast-1" style="height:62px"></div>
-                <div class="bcast-bar bcast-1" style="height:55px"></div>
-                <div class="bcast-bar bcast-1" style="height:60px"></div>
-                <div class="bcast-bar bcast-2" style="height:52px"></div>
-                <div class="bcast-bar bcast-2" style="height:56px"></div>
-              </div>
-              <div class="desc cn mt-1">Relay 两个消息，每个重发 3 次<br>设备支持多<span class="highlight-blue">广播集</span>，Relay 消息可插入广播集重发空隙</div>
+              <div class="desc cn mt-1">设备支持多<span class="highlight-blue">广播集</span>，Relay 消息可插入广播集重发空隙</div>
             </div>
 
             <div class="compare-side" data-f="2">
-              <div class="diagram">
-                <svg viewBox="0 0 300 200" fill="none">
-                  <rect x="120" y="20" width="60" height="40" rx="6" fill="#2a2a35" stroke="rgba(255,255,255,0.1)"/>
-                  <rect x="147" y="14" width="6" height="8" rx="2" fill="#3b82f6"/>
-                  <line x1="150" y1="60" x2="80" y2="130" stroke="#00d4aa" stroke-width="1.5" opacity="0.6"/>
-                  <line x1="150" y1="60" x2="150" y2="130" stroke="#00d4aa" stroke-width="1.5" opacity="0.6"/>
-                  <line x1="150" y1="60" x2="220" y2="130" stroke="#00d4aa" stroke-width="1.5" opacity="0.6"/>
-                  <circle cx="80" cy="140" r="12" fill="#ffd54f"/>
-                  <circle cx="150" cy="140" r="12" fill="#ffd54f"/>
-                  <circle cx="220" cy="140" r="12" fill="#ffd54f"/>
-                  <text x="95" y="115" fill="#666" font-size="10" font-family="JetBrains Mono">+Δt₁</text>
-                  <text x="155" y="105" fill="#666" font-size="10" font-family="JetBrains Mono">+Δt₂</text>
-                  <text x="195" y="115" fill="#666" font-size="10" font-family="JetBrains Mono">+Δt₃</text>
+              <div class="diagram" style="max-width:450px">
+                <svg viewBox="0 0 380 220" fill="none">
+                  <defs>
+                    <marker id="hub-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+                    </marker>
+                  </defs>
+                  <!-- Hub (left) with rounded border -->
+                  <rect x="10" y="15" width="180" height="190" rx="14" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+                  <image href="/img/hub.png" x="25" y="45" width="150" height="130"/>
+                  <!-- Bulbs (right, smaller) -->
+                  <image href="/img/bulb.png" x="315" y="18" width="40" height="40"/>
+                  <image href="/img/bulb.png" x="315" y="90" width="40" height="40"/>
+                  <image href="/img/bulb.png" x="315" y="162" width="40" height="40"/>
+                  <!-- Arrows: bulb → hub (right to left, arrow tip at hub side) -->
+                  <line x1="312" y1="40" x2="194" y2="70" class="mesh-flow" marker-end="url(#hub-arrow)"/>
+                  <line x1="312" y1="110" x2="194" y2="110" class="mesh-flow" marker-end="url(#hub-arrow)"/>
+                  <line x1="312" y1="180" x2="194" y2="150" class="mesh-flow" marker-end="url(#hub-arrow)"/>
                 </svg>
               </div>
               <div class="desc cn">状态消息回传前增加<span class="highlight">随机延时</span><br>建立消息<span class="highlight-blue">优先级队列</span>，保证控制命令优先 Relay<br>降低单位时间内消息数量</div>
@@ -143,20 +222,34 @@
       <!-- ============================== 3. Remote OTA ============================== -->
       <section class="slide">
         <div class="flex-col gap-3" style="align-items:center">
-          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">远程 OTA</span></div>
+          <div class="title-large cn gradient-text">IoT-Mesh 2.0 远程 OTA</div>
 
           <div class="compare mt-2">
             <div class="compare-side" data-f="1">
               <div class="compare-badge old">1.0</div>
               <div class="metric old">单设备耗时 >2hours</div>
               <div class="diagram">
-                <svg viewBox="0 0 300 160" fill="none">
-                  <rect x="20" y="50" width="50" height="35" rx="6" fill="#2a2a35" stroke="rgba(255,255,255,0.1)"/>
-                  <line x1="80" y1="67" x2="200" y2="67" stroke="#666" stroke-width="1.5" stroke-dasharray="4 3"/>
-                  <polygon points="200,62 210,67 200,72" fill="#666"/>
-                  <text x="110" y="55" fill="#666" font-size="11" font-family="Noto Sans SC">固件 200k</text>
-                  <text x="110" y="90" fill="#666" font-size="11" font-family="Noto Sans SC">Mesh 消息 25000 条</text>
-                  <circle cx="240" cy="67" r="12" fill="#555"/>
+                <svg viewBox="0 0 340 200" fill="none">
+                  <defs>
+                    <marker id="storm-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#ff6b3d"/>
+                    </marker>
+                  </defs>
+                  <!-- Hub -->
+                  <rect x="10" y="20" width="130" height="160" rx="12" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                  <image href="/img/hub.png" x="18" y="40" width="114" height="120"/>
+                  <!-- Message queue: stacked packets waiting -->
+                  <rect x="148" y="60" width="14" height="10" rx="2" fill="#ff6b3d" opacity="0.9"/>
+                  <rect x="148" y="73" width="14" height="10" rx="2" fill="#ff6b3d" opacity="0.8"/>
+                  <rect x="148" y="86" width="14" height="10" rx="2" fill="#ff6b3d" opacity="0.7"/>
+                  <rect x="148" y="99" width="14" height="10" rx="2" fill="#ff6b3d" opacity="0.6"/>
+                  <rect x="148" y="112" width="14" height="10" rx="2" fill="#ff6b3d" opacity="0.5"/>
+                  <rect x="148" y="125" width="14" height="10" rx="2" fill="#ff6b3d" opacity="0.35"/>
+                  <text x="155" y="148" text-anchor="middle" fill="#ff6b3d" font-size="9" font-family="var(--ff)" opacity="0.7">×25000</text>
+                  <!-- Single path: one line only -->
+                  <line x1="164" y1="100" x2="270" y2="100" class="storm-flow" stroke-width="2.5" marker-end="url(#storm-arrow)"/>
+                  <!-- Bulb -->
+                  <image href="/img/bulb.png" x="272" y="65" width="65" height="70"/>
                 </svg>
               </div>
               <div class="desc cn">使用 Mesh 网络 OTA，消息数量多，引发<span style="color:var(--old)">广播风暴</span><br>Payload 短，OTA 时间长</div>
@@ -166,17 +259,22 @@
               <div class="compare-badge new">2.0</div>
               <div class="metric new">远程广播 耗时 &lt;10min</div>
               <div class="diagram">
-                <svg viewBox="0 0 300 160" fill="none">
-                  <rect x="20" y="50" width="50" height="35" rx="6" fill="#2a2a35" stroke="rgba(255,255,255,0.1)"/>
-                  <rect x="42" y="44" width="6" height="8" rx="2" fill="#3b82f6"/>
-                  <circle cx="110" cy="67" r="6" class="ota-path-node"/>
-                  <circle cx="160" cy="50" r="6" class="ota-path-node"/>
-                  <circle cx="210" cy="67" r="6" class="ota-path-node"/>
-                  <line x1="70" y1="67" x2="104" y2="67" class="ota-path-line"/>
-                  <line x1="116" y1="63" x2="154" y2="52" class="ota-path-line"/>
-                  <line x1="166" y1="53" x2="204" y2="65" class="ota-path-line"/>
-                  <circle cx="250" cy="67" r="12" fill="#ffd54f"/>
-                  <line x1="216" y1="67" x2="238" y2="67" class="ota-path-line"/>
+                <svg viewBox="0 0 340 200" fill="none">
+                  <defs>
+                    <marker id="path-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+                    </marker>
+                  </defs>
+                  <!-- Hub -->
+                  <rect x="10" y="20" width="150" height="160" rx="12" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                  <image href="/img/hub.png" x="22" y="40" width="126" height="120"/>
+                  <!-- Relay node: small hub png -->
+                  <image href="/img/hub.png" x="183" y="82" width="36" height="36"/>
+                  <!-- Bulb -->
+                  <image href="/img/bulb.png" x="272" y="65" width="65" height="70"/>
+                  <!-- 2 sparse lines: hub → relay → bulb -->
+                  <line x1="163" y1="97"  x2="181" y2="100" class="mesh-flow" marker-end="url(#path-arrow)"/>
+                  <line x1="221" y1="100" x2="270" y2="100" class="mesh-flow" marker-end="url(#path-arrow)"/>
                 </svg>
               </div>
               <div class="desc cn"><span class="highlight">寻路算法</span>，只做路径上转发，有效降低广播风暴<br>使用<span class="highlight-blue">BLE 扩展广播</span>，有效 Payload 增大</div>
@@ -188,7 +286,7 @@
       <!-- ============================== 4. Fast Provisioning ============================== -->
       <section class="slide">
         <div class="flex-col gap-3" style="align-items:center">
-          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">秒级配网</span></div>
+          <div class="title-large cn gradient-text">IoT-Mesh 2.0 秒级配网</div>
 
           <div class="compare mt-2">
             <div class="compare-side" data-f="1">
@@ -253,7 +351,7 @@
       <!-- ============================== 5. Multi-device Control ============================== -->
       <section class="slide">
         <div class="flex-col gap-3" style="align-items:center">
-          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">多设备控制/配置</span></div>
+          <div class="title-large cn gradient-text">IoT-Mesh 2.0 多设备控制/配置</div>
 
           <div class="compare mt-2">
             <div class="compare-side" data-f="1">
@@ -307,7 +405,7 @@
       <!-- ============================== 6. Ultra-low Power ============================== -->
       <section class="slide">
         <div class="flex-col gap-3" style="align-items:center">
-          <div class="title-large cn">IoT-Mesh 2.0 <span class="gradient-text">超低功耗</span></div>
+          <div class="title-large cn gradient-text">IoT-Mesh 2.0 超低功耗</div>
 
           <div class="compare mt-2">
             <div class="compare-side" data-f="1">

@@ -147,27 +147,19 @@ body.overview-active .nav-hint { opacity:0; pointer-events:none; }
 .mesh-link { stroke:var(--accent); stroke-width:1.5; opacity:0.3; }
 .mesh-link-active { stroke:var(--accent); stroke-width:2; opacity:0.8; animation:meshPulse 2s ease-in-out infinite; }
 @keyframes meshPulse { 0%,100% { opacity:0.4; } 50% { opacity:1; } }
+.mesh-flow { stroke:var(--accent); stroke-width:2; opacity:0.8; stroke-dasharray:8 4; animation:meshFlow 1s linear infinite; }
+@keyframes meshFlow { to { stroke-dashoffset:-12; } }
 
-/* Retransmission bars */
-.retrans-bars { display:flex; gap:2rem; justify-content:center; }
-.retrans-group { display:flex; flex-direction:column; align-items:center; gap:.3rem; }
-.retrans-group-label { font-family:var(--font-mono); font-size:.7rem; color:var(--dim); }
-.bar-row { display:flex; gap:3px; align-items:flex-end; }
-.bar { width:6px; border-radius:2px 2px 0 0; }
-.bar-green { background:var(--accent); }
-.bar-blue { background:var(--accent2); }
-
-@keyframes barGrow { from { transform:scaleY(0); } to { transform:scaleY(1); } }
-.bar-animated { transform-origin:bottom; animation:barGrow .4s ease-out both; }
+/* Retransmission chart */
+.retrans-chart { max-width:400px; }
+.retrans-chart svg { width:100%; }
 
 /* ============================================================
    Slide-specific: Consistency (broadcast sets)
    ============================================================ */
 
-.broadcast-sets { display:flex; gap:3px; align-items:flex-end; height:100px; }
-.bcast-bar { width:8px; border-radius:2px 2px 0 0; }
-.bcast-1 { background:var(--accent2); }
-.bcast-2 { background:var(--accent); }
+.bcast-chart { max-width:800px; }
+.bcast-chart svg { width:100%; }
 
 /* ============================================================
    Slide-specific: OTA (routing path)
@@ -176,6 +168,8 @@ body.overview-active .nav-hint { opacity:0; pointer-events:none; }
 .ota-path-node { fill:var(--accent); }
 .ota-path-line { stroke:var(--accent); stroke-width:2; stroke-dasharray:6 3; animation:dashFlow 1.5s linear infinite; }
 @keyframes dashFlow { to { stroke-dashoffset:-18; } }
+.storm-flow { stroke:#ff6b3d; stroke-width:1.5; stroke-dasharray:6 3; animation:stormFlow .6s linear infinite; }
+@keyframes stormFlow { to { stroke-dashoffset:-9; } }
 
 /* ============================================================
    Slide-specific: Provisioning (sequence diagram)
