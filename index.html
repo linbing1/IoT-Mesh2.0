@@ -272,21 +272,21 @@
                   <!-- Hub (sender)，垂直居中 y=52+95/2=99 -->
                   <image href="/img/hub.png" x="5" y="52" width="95" height="95"/>
 
-                  <!-- RelayTop: 暗色，非最优路径，中心 y=50 -->
-                  <image href="/img/bulb.png" x="155" y="34" width="32" height="32" opacity="0.3"/>
-                  <!-- RelayBot: 最优路径中继，中心 y=148（对称于 y=99）-->
-                  <image href="/img/bulb.png" x="155" y="132" width="32" height="32"/>
+                  <!-- RelayTop: 暗色，中心 x=184（hub右缘100与target左缘268的中点），y=50 -->
+                  <image href="/img/bulb.png" x="168" y="34" width="32" height="32" opacity="0.3"/>
+                  <!-- RelayBot: 最优路径，中心 x=184，y=148 -->
+                  <image href="/img/bulb.png" x="168" y="132" width="32" height="32"/>
 
                   <!-- Target，中心 y=99 -->
                   <image href="/img/bulb.png" x="268" y="66" width="52" height="66"/>
 
-                  <!-- 灰色暗线：Hub(100,80)→RelayTop(155,50)→Target(268,80) -->
-                  <line x1="100" y1="80" x2="155" y2="50" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#explore-arrow)"/>
-                  <line x1="188" y1="50" x2="268" y2="80" stroke="rgba(255,255,255,0.18)" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#explore-arrow)"/>
+                  <!-- 灰色暗线：Hub(100,80)→RelayTop(168,50)→Target(268,80) -->
+                  <line x1="100" y1="80" x2="168" y2="50" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#explore-arrow)"/>
+                  <line x1="200" y1="50" x2="268" y2="80" stroke="rgba(255,255,255,0.18)" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#explore-arrow)"/>
 
-                  <!-- 绿色最优路径：Hub(100,118)→RelayBot(155,148)→Target(268,118) -->
-                  <line x1="100" y1="118" x2="153" y2="148" class="mesh-flow" marker-end="url(#path-arrow)"/>
-                  <line x1="189" y1="148" x2="266" y2="118" class="mesh-flow" marker-end="url(#path-arrow)"/>
+                  <!-- 绿色最优路径：Hub(100,118)→RelayBot(168,148)→Target(268,118) -->
+                  <line x1="100" y1="118" x2="166" y2="148" class="mesh-flow" marker-end="url(#path-arrow)"/>
+                  <line x1="201" y1="148" x2="266" y2="118" class="mesh-flow" marker-end="url(#path-arrow)"/>
 
                 </svg>
               </div>
